@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+
+body {
+	margin: 0px 0px 0px0px ;
+	background-image: url(../images/background.jpg);
+	background-size: 50% 100% ;
+	background-repeat: repeat-x;
+}
+
+h1 {
+	font-family: 楷体;
+	color: red;
+}
+
+a {
+	font-family: 楷体;
+	font-size: 60px;
+	color: red;
+}

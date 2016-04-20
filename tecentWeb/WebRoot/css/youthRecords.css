@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0px 0px 0px 0px;
+	background-image: url(../images/youthRecordsBackground.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+h1 {
+	font-family: 楷体;
+	color: red;
+}

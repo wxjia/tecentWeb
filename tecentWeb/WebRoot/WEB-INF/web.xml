@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<filter>
+		<filter-name>defaultFilter</filter-name>
+		<filter-class>cn.wxjia.filter.DefaultFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>defaultFilter</filter-name>
+		<url-pattern>/login.jsp</url-pattern>
+		<url-pattern>/register.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>cn.wxjia.filter.LoginFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/jsp/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>ShowVisitor</servlet-name>
+		<servlet-class>cn.wxjia.servlet.ShowVisitor</servlet-class>
+	</servlet>
+	<servlet>
+
+		<servlet-name>Login</servlet-name>
+		<servlet-class>cn.wxjia.servlet.user.Login</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>cn.wxjia.servlet.user.Register</servlet-class>
+  </servlet>
+
+
+
+	<servlet-mapping>
+		<servlet-name>ShowVisitor</servlet-name>
+		<url-pattern>/ShowVisitor</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

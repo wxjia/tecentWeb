@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0px 0px 0px 0px;
+	background-image: url(../images/loginBackground.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+div {
+	padding-top: 10%;
+	padding-left: 70%;
+}
+
+table {
+	
+}
+
+tr {
+	height: 50px;
+}
+
+td {
+	font-family: 楷体;
+	font-size: large;
+	font-weight: bold;
+	font-family: 楷体;
+}
+
+td.first {
+	width: 80px;
+}
+
+td.second {
+	width: 160px;
+}
