@@ -74,6 +74,13 @@
 		window.location.href = "login.jsp";
 		//window.navigate("login.jsp");
 	}
+	
+	document.onkeydown = function() {
+		// 如果按下回车键
+		if (event.keyCode == 13) {
+			check();
+		}
+	}
 </script>
 
 </head>

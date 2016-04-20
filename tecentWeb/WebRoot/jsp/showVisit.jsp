@@ -30,6 +30,7 @@
 
 <body>
 	<h1>访客记录页</h1>
+	<a href="jsp/main.jsp">返回</a>
 	<br>
 	<table border="1px">
 		<tr>

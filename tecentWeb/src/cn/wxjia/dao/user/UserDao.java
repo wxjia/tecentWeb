@@ -20,6 +20,7 @@ public class UserDao {
 		Connection connection = ConnectDataBase.getConnectionByJdbc();
 		if (null == connection || null == username) {
 			System.out.println("null == connection || null == username");
+			return false;
 		}
 		String sql = "SELECT id FROM userInformation WHERE username=?";
 
@@ -49,6 +50,7 @@ public class UserDao {
 		Connection connection = ConnectDataBase.getConnectionByJdbc();
 		if (null == connection || null == information) {
 			System.out.println("null == connection || null == information");
+			return false;
 		}
 		String sql = "insert into userInformation(username,password,name) values(?,?,?)";
 		try {
@@ -78,6 +80,7 @@ public class UserDao {
 		if (null == connection || null == username || null == password) {
 			System.out
 					.println("null == connection || null == username || null == password");
+			return false;
 		}
 		String sql = "SELECT id FROM userInformation WHERE username=? and password=?";
 		try {

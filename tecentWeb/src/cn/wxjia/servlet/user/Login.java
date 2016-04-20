@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.wxjia.dao.user.LoginRecordDao;
 import cn.wxjia.dao.user.UserDao;
+import cn.wxjia.pojo.LoginRecord;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,19 +35,43 @@ public class Login extends HttpServlet {
 
 		UserDao userDao = new UserDao();
 		boolean ret = userDao.check(username, password);
-		if(false == ret){
-			//登录失败
+		if (false == ret) {
+			// 登录失败
 			request.setAttribute("loginFaliure", "true");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request,
+					response);
 			return;
 		}
 		request.setAttribute("loginSuccess", "true");
 
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
+		// session.setAttribute("realname", realname);
 
-		request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
-		
+		String ip = (String) session.getAttribute("ip");
+		String address = (String) session.getAttribute("address");
+
+		String browser = "unkonwn browser";
+		String os = "unknown os";
+		LoginRecord loginRecord = new LoginRecord(username, null, ip, address,
+				browser, os);
+
+		LoginRecordDao loginRecordDao = new LoginRecordDao();
+		boolean retLoginRecord = loginRecordDao.insertLoginRecord(loginRecord);
+		if (retLoginRecord) {
+			System.out.println(username + " 登录记录插入成功");
+		} else {
+			System.out.println(username + " 登录记录插入失败");
+		}
+
+		if ("emma.lp.young@qq.com".equals(username)) {
+			request.getRequestDispatcher("/jsp/index.jsp").forward(request,
+					response);
+			return;
+		}
+		request.getRequestDispatcher("/jsp/main.jsp")
+				.forward(request, response);
+
 		out.flush();
 		out.close();
 	}
@@ -53,7 +79,6 @@ public class Login extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-
 	}
 
 	public void init() throws ServletException {

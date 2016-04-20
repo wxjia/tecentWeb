@@ -32,19 +32,17 @@ public class GetVisiterDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				String ip = resultSet.getString("ip");
-				Date visitDate = resultSet.getDate("visitTime");
-				Date visitTime = resultSet.getTime("visitTime");
+				Date date = (Date) resultSet.getTimestamp("visitTime");
 				String address = resultSet.getString("address");
 				String userAgent = resultSet.getString("userAgent");
 
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-
-				String dateAndTime = dateFormat.format(visitDate) + " "
-						+ timeFormat.format(visitTime);
+				SimpleDateFormat dateFormat = new SimpleDateFormat(
+						"yyyy-MM-dd HH:mm:ss");
+				String dateAndTime = dateFormat.format(date);
+				// System.out.println("dateAndTime" + dateAndTime);
 
 				NewVisiterBean bean = new NewVisiterBean(ip, dateAndTime,
-						address,userAgent);
+						address, userAgent);
 				list.add(bean);
 			}
 		} catch (SQLException e) {

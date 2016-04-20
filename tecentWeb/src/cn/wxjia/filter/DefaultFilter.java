@@ -39,10 +39,10 @@ public class DefaultFilter implements Filter {
 
 		HttpSession httpSession = httpServletRequest.getSession();
 
-		String initConnect = (String) httpSession.getAttribute("initConnect");
-		if (null == initConnect || "".equals(initConnect)) {
+		String ip = (String) httpSession.getAttribute("ip");
+		if (null == ip || "".equals(ip)) {
 			// 获取访客ip
-			String ip = servletRequest.getRemoteAddr();
+			ip = servletRequest.getRemoteAddr();
 
 			String address = GetAddressByIp
 					.getAddress(
@@ -59,8 +59,9 @@ public class DefaultFilter implements Filter {
 					userAgent);
 
 			new NewVisiterDao().insertNewVisiterData(visiterBean);
+			httpSession.setAttribute("ip", ip);
+			httpSession.setAttribute("address", address);
 		}
-		httpSession.setAttribute("initConnect", "initConnect");
 
 		filterChain.doFilter(servletRequest, servletResponse);
 	}

@@ -53,7 +53,7 @@ public class Register extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("username", information.getUsername());
 
-		request.getRequestDispatcher("/jsp/index.jsp").forward(request,
+		request.getRequestDispatcher("/jsp/main.jsp").forward(request,
 				response);
 
 		out.flush();
