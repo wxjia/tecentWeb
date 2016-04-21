@@ -2,6 +2,8 @@ package cn.wxjia.servlet.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +38,18 @@ public class Register extends HttpServlet {
 		String realname = request.getParameter("realname");
 		System.out.println("realname" + realname);
 
+		Pattern pattern = Pattern
+				.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+
+		Matcher matcher = pattern.matcher(username);
+		boolean rightEmail = matcher.matches();
+		if (!rightEmail || null == username || null == password
+				|| "".equals(username) || "".equals(password)) {
+			request.getRequestDispatcher("/register.jsp").forward(request,
+					response);
+			return;
+		}
+
 		UserInformation information = new UserInformation(username, password,
 				realname);
 		UserDao userDao = new UserDao();
@@ -53,8 +67,8 @@ public class Register extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("username", information.getUsername());
 
-		request.getRequestDispatcher("/jsp/main.jsp").forward(request,
-				response);
+		request.getRequestDispatcher("/jsp/main.jsp")
+				.forward(request, response);
 
 		out.flush();
 		out.close();

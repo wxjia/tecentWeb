@@ -32,7 +32,9 @@ public class LeaveWord extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String userComment = request.getParameter("userComment");
-		
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("username");
+
 		if (null == userComment || "".equals(userComment)) {
 			System.out.println("评论为空");
 			request.setAttribute("commentSuccess", "false");
@@ -40,8 +42,14 @@ public class LeaveWord extends HttpServlet {
 					response);
 			return;
 		}
-		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("username");
+
+		if (null == username || "".equals(username)) {
+			System.out.println("非法用户试图留言");
+			request.getRequestDispatcher("/jsp/main.jsp").forward(request,
+					response);
+			return;
+		}
+
 		LeaveWordBean leaveWordBean = new LeaveWordBean(username, null,
 				userComment);
 		LeaveWordDao leaveWordDao = new LeaveWordDao();
@@ -53,7 +61,7 @@ public class LeaveWord extends HttpServlet {
 					response);
 			return;
 		}
-		
+
 		System.out.println("评论提交成功");
 		request.setAttribute("commentSuccess", "true");
 		request.getRequestDispatcher("/jsp/main.jsp")
