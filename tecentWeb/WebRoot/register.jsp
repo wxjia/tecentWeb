@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -21,70 +22,10 @@
 <link href="<%=path%>/css/login.css" rel="stylesheet" type="text/css">
 
 
-<script type="text/javascript" charset="utf-8">
-	function check() {
-		var username = document.getElementById("username").value;
-		var realname = document.getElementById("realname").value;
-		var password = document.getElementById("password").value;
-		var repassword = document.getElementById("repassword").value;
-
-		if (null == username || "" == username) {
-			alert("用户邮箱为空");
-			return;
-		}
-		var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
-		if (!pattern.test(username)) {
-			// 如果验证不成功
-			alert("邮箱格式不正确");
-			return;
-		}
-		if (null == realname || "" == realname) {
-			alert("真实姓名为空");
-			return;
-		}
-		if (null == password || "" == password) {
-			alert("密码为空");
-			return;
-		}
-
-		if (password.length < 6) {
-			alert("密码长度小于6");
-			return;
-		}
-
-		if (null == repassword || "" == repassword) {
-			alert("确认密码为空");
-			return;
-		}
-
-		if (password != repassword) {
-			alert("两次密码输入不同");
-			return;
-		}
-
-		if ("123456" == password || "666666" == password) {
-			alert("密码太简单");
-			return;
-		}
-
-		document.getElementById("myForm").submit();
-	}
-
-	function returnLogin() {
-		window.location.href = "login.jsp";
-		//window.navigate("login.jsp");
-	}
+<script type="text/javascript" charset="utf-8" src="js/register.js">
 	
-	document.onkeydown = function() {
-		// 如果按下回车键
-		if (event.keyCode == 13) {
-			check();
-		}
-	}
 </script>
-
 </head>
-
 <body>
 	<div>
 		<form id="myForm" action="Register" method="post">
@@ -112,10 +53,49 @@
 					<td class="second"><input id="repassword" type="password"></td>
 				</tr>
 				<tr>
+					<td class="first">验证码</td>
+					<td class="second"><input id="inputIdentifyCode" type="text"
+						name="inputIdentifyCode"></td>
+				</tr>
+
+				<tr>
+					<td class="first"><input id="changeCode" type="button"
+						value="获取验证码" onclick="changeIdentifyCodeJS()"></td>
+					<td class="second"><img id="identifyCodeImg" src="images/defaultCode.jpg"></td>
+				</tr>
+				<tr>
 					<td colspan="2" align="center"><input type="button"
 						value="返回登录" onclick="returnLogin()"> <input type="button"
 						value="注册" onclick="check()"></td>
 				</tr>
+
+				<c:if test="${nameIsExist eq 'true' }">
+					<tr>
+						<td colspan="2" align="center">
+							<h1>注册的用户已存在</h1>
+						</td>
+					</tr>
+				</c:if>
+
+				<c:if test="${identifyCodeError eq 'true' }">
+					<tr>
+						<td colspan="2" align="center">
+							<h1>验证码错误</h1>
+						</td>
+					</tr>
+				</c:if>
+
+
+
+				<c:if test="${usernameAndPassword eq 'true' }">
+					<tr>
+						<td colspan="2" align="center">
+							<h1>用户名和密码有误</h1>
+						</td>
+					</tr>
+				</c:if>
+
+
 			</table>
 		</form>
 	</div>

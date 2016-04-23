@@ -42,9 +42,19 @@ public class Login extends HttpServlet {
 					response);
 			return;
 		}
-		request.setAttribute("loginSuccess", "true");
 
+		// identifyCode
 		HttpSession session = request.getSession();
+		String inputIdentifyCode = request.getParameter("inputIdentifyCode");
+		if (null == inputIdentifyCode || "".equals(inputIdentifyCode)) {
+			// 登录失败
+			request.setAttribute("loginFaliure", "true");
+			request.getRequestDispatcher("/login.jsp").forward(request,
+					response);
+			return;
+		}
+
+		request.setAttribute("loginSuccess", "true");
 		session.setAttribute("username", username);
 		// session.setAttribute("realname", realname);
 

@@ -42,6 +42,14 @@ public class LeaveWord extends HttpServlet {
 					response);
 			return;
 		}
+		
+		if (userComment.length() > 128) {
+			System.out.println("评论过长");
+			request.setAttribute("commentSuccess", "false");
+			request.getRequestDispatcher("/jsp/main.jsp").forward(request,
+					response);
+			return;
+		}
 
 		if (null == username || "".equals(username)) {
 			System.out.println("非法用户试图留言");

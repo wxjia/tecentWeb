@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.wxjia.dao.user.LoginRecordDao;
 import cn.wxjia.dao.user.UserDao;
+import cn.wxjia.pojo.LoginRecord;
 import cn.wxjia.pojo.UserInformation;
 
 public class Register extends HttpServlet {
@@ -45,6 +47,16 @@ public class Register extends HttpServlet {
 		boolean rightEmail = matcher.matches();
 		if (!rightEmail || null == username || null == password
 				|| "".equals(username) || "".equals(password)) {
+			request.setAttribute("usernameAndPassword", "true");
+			request.getRequestDispatcher("/register.jsp").forward(request,
+					response);
+			return;
+		}
+
+		String inputIdentifyCode = request.getParameter("inputIdentifyCode");
+		if (null == inputIdentifyCode || "".equals(inputIdentifyCode)) {
+			// 登录失败
+			request.setAttribute("identifyCodeError", "true");
 			request.getRequestDispatcher("/register.jsp").forward(request,
 					response);
 			return;
@@ -66,6 +78,21 @@ public class Register extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("username", information.getUsername());
+
+		String ip = (String) session.getAttribute("ip");
+		String address = (String) session.getAttribute("address");
+		String browser = "unkonwn browser";
+		String os = "unknown os";
+
+		LoginRecord loginRecord = new LoginRecord(username, null, ip, address,
+				browser, os);
+		LoginRecordDao loginRecordDao = new LoginRecordDao();
+		boolean retLoginRecord = loginRecordDao.insertLoginRecord(loginRecord);
+		if (retLoginRecord) {
+			System.out.println(username + " 登录记录插入成功");
+		} else {
+			System.out.println(username + " 登录记录插入失败");
+		}
 
 		request.getRequestDispatcher("/jsp/main.jsp")
 				.forward(request, response);

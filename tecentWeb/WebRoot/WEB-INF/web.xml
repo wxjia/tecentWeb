@@ -41,6 +41,11 @@
 		<servlet-name>LeaveWord</servlet-name>
 		<servlet-class>cn.wxjia.servlet.LeaveWord</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>IdentifyingCode</servlet-name>
+		<servlet-class>cn.wxjia.servlet.IdentifyingCode</servlet-class>
+	</servlet>
+
 
 
 
@@ -60,6 +65,10 @@
 	<servlet-mapping>
 		<servlet-name>LeaveWord</servlet-name>
 		<url-pattern>/LeaveWord</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>IdentifyingCode</servlet-name>
+		<url-pattern>/IdentifyingCode</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

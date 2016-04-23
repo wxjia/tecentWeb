@@ -7,9 +7,14 @@ body {
 	background-size: 100% 100%;
 }
 
+h1,h2,h3,h4,h5,h6 {
+	font-family: 楷体;
+	color: red;
+}
+
 div {
-	padding-top: 10%;
-	padding-left: 70%;
+	padding-top: 0%;
+	padding-left: 60%;
 }
 
 table {
@@ -17,7 +22,8 @@ table {
 }
 
 tr {
-	height: 50px;
+	height: 40px;
+	width: 400px;
 }
 
 td {
@@ -28,7 +34,7 @@ td {
 }
 
 td.first {
-	width: 80px;
+	width: 100px;
 }
 
 td.second {
