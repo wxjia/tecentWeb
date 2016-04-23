@@ -57,8 +57,8 @@
 				</tr>
 
 				<tr>
-					<td class="first"><input id="changeCode" type="button"
-						value="获取验证码" onclick="changeIdentifyCodeJS()"></td>
+					<td class="first"><input id="changeCodeButton" type="button"
+						value="更换验证码" onclick="changeIdentifyCodeJS()"></td>
 					<td class="second"><img id="identifyCodeImg"
 						src="images/defaultCode.jpg"></td>
 				</tr>

@@ -4,16 +4,20 @@
 
 var xmlHttpRequest;
 var identifyCode = "";
+var changeCodeButton;
 
 function changeIdentifyCodeJS() {
+	changeCodeButton = document.getElementById("changeCodeButton");
+	changeCodeButton.disabled = "disabled";
 	createXmlHttpRequest();
 	if (xmlHttpRequest != null) {// 确定XMLHttpRequest是否创建成功
-		var url = "IdentifyingCode";
-		xmlHttpRequest.open("POST", url, true);
+		xmlHttpRequest.open("POST", "IdentifyingCode", true);
 		xmlHttpRequest.setRequestHeader("Content-Type",
 				"application/x-www-form-urlencoded;");
 		xmlHttpRequest.onreadystatechange = processRequest; // 注册回调函数
-		xmlHttpRequest.send("random=random");
+		xmlHttpRequest.send("nothing=nothing");
+		// 在这里睡几秒
+		changeCodeButton.removeAttribute("disabled");
 	} else {
 		alert("不能创建XMLHttpRequest对象实例");
 	}
@@ -47,14 +51,13 @@ function processRequest() {
 		if (xmlHttpRequest.status == 200) {
 			identifyCode = xmlHttpRequest.responseText;
 			identifyCode = identifyCode.toUpperCase();
+
 			var verify = document.getElementById("identifyCodeImg");
-			verify.setAttribute("src", "images/identifyCode.jpg?random="
-					+ Math.random());
-			document.getElementById("changeCode").value = "更换验证码";
+			var newSrc = "images/identifyCode.jpg?random=" + Math.random();
+			verify.setAttribute("src", newSrc);
 		} else {
 			alert("请求处理返回的数据有错误");
 			alert(xmlHttpRequest.status);
-
 		}
 	}
 }
@@ -109,3 +112,5 @@ document.onkeydown = function() {
 		check();
 	}
 };
+
+window.onload = changeIdentifyCodeJS;
