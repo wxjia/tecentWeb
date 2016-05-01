@@ -1,11 +1,21 @@
 package cn.wxjia.pojo;
 
-public class NewVisiterBean {
+public class WebVisitBean {
 	private int id;
 	private String ip;
 	private String visitTime;
 	private String address;
 	private String userAgent;
+
+	public WebVisitBean(int id, String ip, String visitTime, String address,
+			String userAgent) {
+		super();
+		this.id = id;
+		this.ip = ip;
+		this.visitTime = visitTime;
+		this.address = address;
+		this.userAgent = userAgent;
+	}
 
 	public int getId() {
 		return id;
@@ -45,29 +55,6 @@ public class NewVisiterBean {
 
 	public void setUserAgent(String userAgent) {
 		this.userAgent = userAgent;
-	}
-
-	public NewVisiterBean(String ip, String address) {
-		super();
-		this.ip = ip;
-		this.address = address;
-	}
-
-	public NewVisiterBean(String ip, String visitTime, String address,
-			String userAgent) {
-		super();
-		this.ip = ip;
-		this.visitTime = visitTime;
-		this.address = address;
-		this.userAgent = userAgent;
-	}
-
-	public NewVisiterBean(int id, String ip, String visitTime, String address) {
-		super();
-		this.id = id;
-		this.ip = ip;
-		this.visitTime = visitTime;
-		this.address = address;
 	}
 
 }

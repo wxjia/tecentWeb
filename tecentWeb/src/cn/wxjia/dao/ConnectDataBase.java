@@ -28,7 +28,6 @@ public class ConnectDataBase {
 
 			String connStr = "jdbc:mysql://" + url + ":" + port + "/"
 					+ dateBaseName + "?characterEncoding=UTF-8";
-			// System.out.println("connStr " + connStr);
 			conn = DriverManager.getConnection(connStr, username, passwd);
 		} catch (ClassNotFoundException e) {
 			System.out.println("可能是jar包没导入");

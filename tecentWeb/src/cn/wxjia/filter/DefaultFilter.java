@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cn.wxjia.dao.NewVisiterDao;
-import cn.wxjia.pojo.NewVisiterBean;
+import cn.wxjia.dao.VisiterDao;
+import cn.wxjia.pojo.WebVisitBean;
 import cn.wxjia.util.GetAddressByIp;
 
 public class DefaultFilter implements Filter {
@@ -53,12 +53,10 @@ public class DefaultFilter implements Filter {
 				address = "获取地址失败";
 			}
 			String userAgent = httpServletRequest.getHeader("User-Agent");
-			// Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like
-			// Gecko
-			NewVisiterBean visiterBean = new NewVisiterBean(ip, null, address,
+			WebVisitBean visiterBean = new WebVisitBean(0, ip, null, address,
 					userAgent);
 
-			new NewVisiterDao().insertNewVisiterData(visiterBean);
+			new VisiterDao().insertNewVisiterData(visiterBean);
 			httpSession.setAttribute("ip", ip);
 			httpSession.setAttribute("address", address);
 		}

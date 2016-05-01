@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.wxjia.dao.user.LoginRecordDao;
 import cn.wxjia.dao.user.UserDao;
-import cn.wxjia.pojo.LoginRecord;
+import cn.wxjia.pojo.LoginRecordBean;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -61,10 +61,8 @@ public class Login extends HttpServlet {
 		String ip = (String) session.getAttribute("ip");
 		String address = (String) session.getAttribute("address");
 
-		String browser = "unkonwn browser";
-		String os = "unknown os";
-		LoginRecord loginRecord = new LoginRecord(username, null, ip, address,
-				browser, os);
+		LoginRecordBean loginRecord = new LoginRecordBean(0, username, null,
+				ip, address);
 
 		LoginRecordDao loginRecordDao = new LoginRecordDao();
 		boolean retLoginRecord = loginRecordDao.insertLoginRecord(loginRecord);

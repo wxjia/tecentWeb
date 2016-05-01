@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import cn.wxjia.dao.user.LoginRecordDao;
 import cn.wxjia.dao.user.UserDao;
-import cn.wxjia.pojo.LoginRecord;
-import cn.wxjia.pojo.UserInformation;
+import cn.wxjia.pojo.LoginRecordBean;
+import cn.wxjia.pojo.UserInformationBean;
 
 public class Register extends HttpServlet {
 
@@ -62,8 +62,8 @@ public class Register extends HttpServlet {
 			return;
 		}
 
-		UserInformation information = new UserInformation(username, password,
-				realname);
+		UserInformationBean information = new UserInformationBean(0, username,
+				password, realname);
 		UserDao userDao = new UserDao();
 		boolean isExist = userDao.isExist(username);
 		if (isExist) {
@@ -81,11 +81,9 @@ public class Register extends HttpServlet {
 
 		String ip = (String) session.getAttribute("ip");
 		String address = (String) session.getAttribute("address");
-		String browser = "unkonwn browser";
-		String os = "unknown os";
 
-		LoginRecord loginRecord = new LoginRecord(username, null, ip, address,
-				browser, os);
+		LoginRecordBean loginRecord = new LoginRecordBean(0, username, null,
+				ip, address);
 		LoginRecordDao loginRecordDao = new LoginRecordDao();
 		boolean retLoginRecord = loginRecordDao.insertLoginRecord(loginRecord);
 		if (retLoginRecord) {

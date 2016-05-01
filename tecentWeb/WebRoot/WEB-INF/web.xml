@@ -50,11 +50,6 @@
 		<servlet-class>cn.wxjia.servlet.app.DeviceInformationServlet</servlet-class>
 	</servlet>
 
-
-
-
-
-
 	<servlet-mapping>
 		<servlet-name>ShowVisitor</servlet-name>
 		<url-pattern>/ShowVisitor</url-pattern>

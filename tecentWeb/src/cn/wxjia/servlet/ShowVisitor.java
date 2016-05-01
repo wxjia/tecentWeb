@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.wxjia.dao.GetVisiterDao;
-import cn.wxjia.pojo.NewVisiterBean;
+import cn.wxjia.dao.VisiterDao;
+import cn.wxjia.pojo.WebVisitBean;
 
 public class ShowVisitor extends HttpServlet {
 
@@ -29,7 +29,7 @@ public class ShowVisitor extends HttpServlet {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		List<NewVisiterBean> list = new GetVisiterDao().getVisiterData();
+		List<WebVisitBean> list = new VisiterDao().getVisiterData();
 
 		request.setAttribute("list", list);
 		request.setAttribute("listSize", list.size());

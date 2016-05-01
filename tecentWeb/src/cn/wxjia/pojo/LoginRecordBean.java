@@ -2,13 +2,31 @@ package cn.wxjia.pojo;
 
 import java.util.Date;
 
-public class LoginRecord {
+public class LoginRecordBean {
+
+	private int id;
 	private String username;
 	private Date loginTime;
 	private String ip;
 	private String address;
-	private String browser;
-	private String os;
+
+	public LoginRecordBean(int id, String username, Date loginTime, String ip,
+			String address) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.loginTime = loginTime;
+		this.ip = ip;
+		this.address = address;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getUsername() {
 		return username;
@@ -40,33 +58,6 @@ public class LoginRecord {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getBrowser() {
-		return browser;
-	}
-
-	public void setBrowser(String browser) {
-		this.browser = browser;
-	}
-
-	public String getOs() {
-		return os;
-	}
-
-	public void setOs(String os) {
-		this.os = os;
-	}
-
-	public LoginRecord(String username, Date loginTime, String ip,
-			String address, String browser, String os) {
-		super();
-		this.username = username;
-		this.loginTime = loginTime;
-		this.ip = ip;
-		this.address = address;
-		this.browser = browser;
-		this.os = os;
 	}
 
 }

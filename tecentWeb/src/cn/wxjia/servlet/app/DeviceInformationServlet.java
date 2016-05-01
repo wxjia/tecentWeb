@@ -41,9 +41,9 @@ public class DeviceInformationServlet extends HttpServlet {
 		while (it.hasNext()) {
 			String key = it.next();
 			String[] value = map.get(key);
-			out.print(key);
-			out.print(" = ");
-			out.println(value[0]);
+			System.out.print(key);
+			System.out.print(" = ");
+			System.out.println(value[0]);
 
 		}
 

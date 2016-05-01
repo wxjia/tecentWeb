@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import cn.wxjia.dao.ConnectDataBase;
-import cn.wxjia.pojo.UserInformation;
+import cn.wxjia.pojo.UserInformationBean;
 
 public class UserDao {
 
@@ -46,7 +46,7 @@ public class UserDao {
 	 * 
 	 * @return
 	 */
-	public boolean insertUser(UserInformation information) {
+	public boolean insertUser(UserInformationBean information) {
 		Connection connection = ConnectDataBase.getConnectionByJdbc();
 		if (null == connection || null == information) {
 			System.out.println("null == connection || null == information");
@@ -57,7 +57,7 @@ public class UserDao {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
 			preparedStatement.setString(1, information.getUsername());
-			preparedStatement.setString(2, information.getPasswd());
+			preparedStatement.setString(2, information.getPassword());
 			preparedStatement.setString(3, information.getName());
 
 			int num = preparedStatement.executeUpdate();
