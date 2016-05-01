@@ -45,6 +45,11 @@
 		<servlet-name>IdentifyingCode</servlet-name>
 		<servlet-class>cn.wxjia.servlet.IdentifyingCode</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DeviceInformationServlet</servlet-name>
+		<servlet-class>cn.wxjia.servlet.app.DeviceInformationServlet</servlet-class>
+	</servlet>
+
 
 
 
@@ -69,6 +74,10 @@
 	<servlet-mapping>
 		<servlet-name>IdentifyingCode</servlet-name>
 		<url-pattern>/IdentifyingCode</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeviceInformationServlet</servlet-name>
+		<url-pattern>/DeviceInformationServlet</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
