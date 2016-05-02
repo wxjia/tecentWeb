@@ -21,7 +21,7 @@
 
 <link href="<%=path%>/css/login.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" charset="utf-8" src="js/login.js">
+<script type="text/javascript" charset="utf-8" src="/tecentWeb/js/login.js">
 	
 </script>
 

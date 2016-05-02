@@ -49,6 +49,11 @@
 		<servlet-name>DeviceInformationServlet</servlet-name>
 		<servlet-class>cn.wxjia.servlet.app.DeviceInformationServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DownLoadApp</servlet-name>
+		<servlet-class>cn.wxjia.servlet.DownLoadApp</servlet-class>
+	</servlet>
+
 
 	<servlet-mapping>
 		<servlet-name>ShowVisitor</servlet-name>
@@ -73,6 +78,10 @@
 	<servlet-mapping>
 		<servlet-name>DeviceInformationServlet</servlet-name>
 		<url-pattern>/DeviceInformationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownLoadApp</servlet-name>
+		<url-pattern>/DownLoadApp</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

@@ -22,7 +22,7 @@
 
 <link href="<%=path%>/css/main.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="../js/main.js">
+<script type="text/javascript" src="/tecentWeb/js/main.js">
 	
 </script>
 

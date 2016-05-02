@@ -2,14 +2,15 @@ package cn.wxjia.servlet.app;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import cn.wxjia.dao.app.AppVisitDao;
+import cn.wxjia.pojo.app.AppVisitBean;
 
 public class DeviceInformationServlet extends HttpServlet {
 
@@ -35,17 +36,21 @@ public class DeviceInformationServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		Map<String, String[]> map = request.getParameterMap();
-		Set<String> set = map.keySet();
+		
+		String teleNumber = map.get("teleNumber")[0];
+		String ip = map.get("ip")[0];
+		String address = map.get("address")[0];
+		String mType = map.get("mType")[0];
+		int mWidth = Integer.valueOf(map.get("mWidth")[0]);
+		int mHeight = Integer.valueOf(map.get("mHeight")[0]);
+		String imei = map.get("imei")[0];
+		String macAddress = map.get("macAddress")[0];
 
-		Iterator<String> it = set.iterator();
-		while (it.hasNext()) {
-			String key = it.next();
-			String[] value = map.get(key);
-			System.out.print(key);
-			System.out.print(" = ");
-			System.out.println(value[0]);
+		AppVisitBean bean = new AppVisitBean(0, teleNumber, null, ip, address,
+				mType, mWidth, mHeight, imei, macAddress);
 
-		}
+		AppVisitDao appVisitDao = new AppVisitDao();
+		appVisitDao.insertAppVisiterData(bean);
 
 		out.flush();
 		out.close();

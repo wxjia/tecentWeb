@@ -1,18 +1,32 @@
 package cn.wxjia.pojo.app;
 
-import java.util.Date;
-
 public class AppVisitBean {
 	private int id;
 	private String teleNumber;
-	private Date visitTime;
+	private String visitTime;
 	private String ip;
 	private String address;
 	private String mType;
-	private int mWide;
+	private int mWidth;
 	private int mHeight;
 	private String imei;
 	private String macAddress;
+
+	public AppVisitBean(int id, String teleNumber, String visitTime, String ip,
+			String address, String mType, int mWidth, int mHeight, String imei,
+			String macAddress) {
+		super();
+		this.id = id;
+		this.teleNumber = teleNumber;
+		this.visitTime = visitTime;
+		this.ip = ip;
+		this.address = address;
+		this.mType = mType;
+		this.mWidth = mWidth;
+		this.mHeight = mHeight;
+		this.imei = imei;
+		this.macAddress = macAddress;
+	}
 
 	public int getId() {
 		return id;
@@ -30,11 +44,11 @@ public class AppVisitBean {
 		this.teleNumber = teleNumber;
 	}
 
-	public Date getVisitTime() {
+	public String getVisitTime() {
 		return visitTime;
 	}
 
-	public void setVisitTime(Date visitTime) {
+	public void setVisitTime(String visitTime) {
 		this.visitTime = visitTime;
 	}
 
@@ -62,12 +76,12 @@ public class AppVisitBean {
 		this.mType = mType;
 	}
 
-	public int getmWide() {
-		return mWide;
+	public int getmWidth() {
+		return mWidth;
 	}
 
-	public void setmWide(int mWide) {
-		this.mWide = mWide;
+	public void setmWidth(int mWidth) {
+		this.mWidth = mWidth;
 	}
 
 	public int getmHeight() {
@@ -91,22 +105,6 @@ public class AppVisitBean {
 	}
 
 	public void setMacAddress(String macAddress) {
-		this.macAddress = macAddress;
-	}
-
-	public AppVisitBean(int id, String teleNumber, Date visitTime, String ip,
-			String address, String mType, int mWide, int mHeight, String imei,
-			String macAddress) {
-		super();
-		this.id = id;
-		this.teleNumber = teleNumber;
-		this.visitTime = visitTime;
-		this.ip = ip;
-		this.address = address;
-		this.mType = mType;
-		this.mWide = mWide;
-		this.mHeight = mHeight;
-		this.imei = imei;
 		this.macAddress = macAddress;
 	}
 
