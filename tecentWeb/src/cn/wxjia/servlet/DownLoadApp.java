@@ -27,7 +27,7 @@ public class DownLoadApp extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 
-		out.print("<a href=\"/tecentWeb/apk/GFMonitor.apk\">点击下载APP</a>");
+		out.print("<a href=\"/tecentWeb/apk/GFMonitor.apk\"><h1>点击下载APP</h1></a>");
 		out.flush();
 		out.close();
 	}

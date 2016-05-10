@@ -53,6 +53,14 @@
 		<servlet-name>DownLoadApp</servlet-name>
 		<servlet-class>cn.wxjia.servlet.DownLoadApp</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AppLoginServlet</servlet-name>
+		<servlet-class>cn.wxjia.servlet.app.AppLoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginRecordServlet</servlet-name>
+		<servlet-class>cn.wxjia.servlet.app.LoginRecordServlet</servlet-class>
+	</servlet>
 
 
 	<servlet-mapping>
@@ -82,6 +90,15 @@
 	<servlet-mapping>
 		<servlet-name>DownLoadApp</servlet-name>
 		<url-pattern>/DownLoadApp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AppLoginServlet</servlet-name>
+		<url-pattern>/AppLoginServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoginRecordServlet</servlet-name>
+		<url-pattern>/LoginRecordServlet</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

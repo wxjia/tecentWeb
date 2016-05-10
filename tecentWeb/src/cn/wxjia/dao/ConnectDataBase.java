@@ -18,12 +18,21 @@ public class ConnectDataBase {
 	 */
 	public static Connection getConnectionByJdbc() {
 		Connection conn = null;
+
+		// 默认公网
+		String username = "root";
+		String passwd = "jwx1016";
+		String port = "3306";
+		String dateBaseName = "test";
+		String url = "119.29.223.93";
+
+		String os = System.getProperty("os.name");
+		String osUser = System.getProperty("user.name");
+		// 如果是内网
+		if ("Linux".equals(os) && "ubunru".equals(osUser)) {
+			url = "127.0.0.1";
+		}
 		try {
-			String username = "cdb_outerroot";
-			String passwd = "wxjia1234";
-			String url = "5712e4b241029.gz.cdb.myqcloud.com";
-			String port = "11907";
-			String dateBaseName = "test";
 			Class.forName("com.mysql.jdbc.Driver");
 
 			String connStr = "jdbc:mysql://" + url + ":" + port + "/"
